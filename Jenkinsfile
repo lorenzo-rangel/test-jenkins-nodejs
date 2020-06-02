@@ -18,18 +18,19 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'lorenzo.globant', url: 'https://github.globant.com/Mexico-Talent-Pool/tnn-marketplace-ui.git']]])
             }
         }
+        /*
         stage('Build') {
             steps {
                 sh 'npm install'
             }
-        }
+        }*/
         stage('Test') {
             steps {
                 echo 'Testing...'
                 //sh 'npm test'
             }
         }
-        /*
+        
         stage('Building image') {
             steps{
                 script {
@@ -37,6 +38,7 @@ pipeline {
                 }
             }
         } 
+        /*
         stage('Deploy Image') {
             steps{
                 script {
