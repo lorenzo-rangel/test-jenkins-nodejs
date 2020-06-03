@@ -1,4 +1,10 @@
-// BEST TUTORIAL AT https://medium.com/@gustavo.guss/jenkins-starting-with-pipeline-doing-a-node-js-test-72c6057b67d4
+/**
+ * How to doing a NodeJS pipeline in Jenkins
+ * https://medium.com/@gustavo.guss/jenkins-starting-with-pipeline-doing-a-node-js-test-72c6057b67d4
+ * 
+ * How to add stage to build and sending an image to registry with Docker
+ * https://medium.com/@gustavo.guss/jenkins-building-docker-image-and-sending-to-registry-64b84ea45ee9
+ */
 pipeline {
     
   
@@ -18,12 +24,11 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'lorenzo.globant', url: 'https://github.globant.com/Mexico-Talent-Pool/tnn-marketplace-ui.git']]])
             }
         }
-        /*
         stage('Build') {
             steps {
                 sh 'npm install'
             }
-        }*/
+        }
         stage('Test') {
             steps {
                 echo 'Testing...'
@@ -47,12 +52,12 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage('Remove Unused docker image') {
             steps{
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
-        }*/
+        }
     }
 }
 
